@@ -17,9 +17,6 @@ To use it from anywhere, add an alias to your shell config:
 alias flip='/path/to/flip.sh'
 ```
 
-> macOS only — uses `pbcopy` for clipboard support. Support for other
-> clipboards (e.g. `xclip` on Linux) is planned.
-
 ## Prerequisites
 
 - macOS
