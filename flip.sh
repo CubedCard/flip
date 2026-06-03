@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
 
+# declare tables
 declare -i table_count
 table_count=$(find ./tables -name "*.txt" | wc -l)
-echo "$table_count"
 
+# select random table and get its contents
 n=$(($RANDOM % $table_count))
 tables=(./tables/*)
-echo "$n"
+result="$(cat ${tables[$n]})"
 
-result="${tables[$n]}"
-echo "$result"
-cat $result | pbcopy
+# trimming
+result="${result#"${result%%[![:space:]]*}"}"
+result="${result%"${result##*[![:space:]]}"}"
+result=${result//$'\n'/}
+result=${result//$'\r'/}
+
+# copy and print the result
+printf '%s' "$result" | pbcopy
+printf '%s\n' "$result"
