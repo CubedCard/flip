@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Create Github Release
+        uses: softprops/action-gh-release@v2
+
+      - name: Update Homebrew Formula
+        run: |
+          URL="https://github.com/${{ github.repository }}/archive/refs/tags/${{ github.ref_name }}.tar.gz"
+          SHA256=$(curl -sL "$URL" | shasum -a 256 | cut -d' ' -f1)
+
+          git clone https://x-access-token:${{ secrets.TAP_TOKEN }}@github.com/cubedcard/homebrew-flip.git
+          cd homebrew-flip
+          sed -i "s|url \".*\"|url \"$URL\"|" Formula/flip.rb
+          sed -i "s|sha256 \".*\"|sha256 \"$SHA256\"|" Formula/flip.rb
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add Formula/flip.rb
+          git commit -m "Update flip to ${{ github.ref_name }}"
+          git push
