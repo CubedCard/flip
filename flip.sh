@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# set path
+cd "$(dirname "$0")"
+
 # declare tables
 declare -i table_count
 table_count=$(find ./tables -name "*.txt" | wc -l)
