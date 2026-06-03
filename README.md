@@ -1,5 +1,8 @@
 # flip
 
+![GitHub release](https://img.shields.io/github/v/release/cubedcard/flip)
+![GitHub downloads](https://img.shields.io/github/downloads/cubedcard/flip/total)
+
 Prints a random table-flipping emoji to your terminal and copies it to your
 clipboard.
 
