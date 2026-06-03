@@ -11,7 +11,15 @@ clipboard.
 
 ## Install
 
-To use it from anywhere, add an alias to your shell config:
+### Homebrew (recommended)
+
+```bash
+brew install cubedcard/flip/flip
+```
+
+### Manual
+
+Add an alias to your shell config:
 
 ```bash
 alias flip='/path/to/flip.sh'
@@ -19,5 +27,5 @@ alias flip='/path/to/flip.sh'
 
 ## Prerequisites
 
-- macOS
+- macOS, Linux, or Windows (WSL/Git Bash)
 - bash 3.2+
