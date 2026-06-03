@@ -28,8 +28,8 @@ jobs:
           cd homebrew-flip
           sed -i "s|url \".*\"|url \"$URL\"|" Formula/flip.rb
           sed -i "s|sha256 \".*\"|sha256 \"$SHA256\"|" Formula/flip.rb
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          git config user.name "CubedCard"
+          git config user.email "jipderksen@gmail.com"
           git add Formula/flip.rb
           git commit -m "Update flip to ${{ github.ref_name }}"
           git push
